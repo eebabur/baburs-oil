@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Arcavias" default="all">
+
+	<property name="coredir" value="${project.basedir}" override="false" />
+	<property name="extdir" value="${project.basedir}/ext" override="false" />
+	<property name="bindir" value="${project.basedir}/vendor/bin/" override="false" />
+
+
+	<target name="setup" description="Sets up database incl. unit test data">
+		<echo msg="Setting up test database" />
+		<exec command="php ${coredir}/setup.php unittest" checkreturn="true" logoutput="true"/>
+	</target>
+
+	<target name="setupperf" description="Sets up database incl. performance test data">
+		<echo msg="Setting up performance data" />
+		<exec command="php ${coredir}/setup.php unitperf" checkreturn="true" logoutput="true"/>
+	</target>
+
+
+	<target name="coverage" description="Creates coverage reports">
+		<phing target="coverage" haltonfailure="true" dir="${coredir}/lib/mshoplib" />
+		<phing target="coverage" haltonfailure="true" dir="${coredir}/controller/common" />
+		<phing target="coverage" haltonfailure="true" dir="${coredir}/controller/frontend" />
+		<phing target="coverage" haltonfailure="true" dir="${coredir}/controller/extjs" />
+		<phing target="coverage" haltonfailure="true" dir="${coredir}/controller/jobs" />
+		<phing target="coverage" haltonfailure="true" dir="${coredir}/client/html" />
+		<phing target="coverage" haltonfailure="true" dir="${coredir}/lib/mwlib" />
+		<phing target="coverage" haltonfailure="true">
+			<fileset dir="${extdir}" expandsymboliclinks="true" >
+				<include name="**/phing.xml" />
+			</fileset>
+		</phing>
+	</target>
+
+	<target name="coverageext" description="Creates coverage report for specific extension directory">
+		<phing target="coverage" haltonfailure="true" dir="${dir}" phingfile="phing.xml" />
+	</target>
+
+
+	<target name="test" description="Executes unit tests">
+		<phing target="test" haltonfailure="true" dir="${coredir}/lib/mshoplib" />
+		<phing target="test" haltonfailure="true" dir="${coredir}/controller/common" />
+		<phing target="test" haltonfailure="true" dir="${coredir}/controller/frontend" />
+		<phing target="test" haltonfailure="true" dir="${coredir}/controller/extjs" />
+		<phing target="test" haltonfailure="true" dir="${coredir}/controller/jobs" />
+		<phing target="test" haltonfailure="true" dir="${coredir}/client/html" />
+		<phing target="test" haltonfailure="true" dir="${coredir}/lib/mwlib" />
+		<phing target="test" haltonfailure="true">
+			<fileset dir="${extdir}" expandsymboliclinks="true" >
+				<include name="**/phing.xml" />
+			</fileset>
+		</phing>
+	</target>
+
+	<target name="testext" description="Executes tests of specific extension directory">
+		<phing target="test" haltonfailure="true" dir="${dir}" phingfile="phing.xml" />
+	</target>
+
+	<target name="testperf" description="Executes performance tests">
+		<phing target="testperf" haltonfailure="true" dir="${coredir}/controller/jobs" />
+		<phing target="testperf" haltonfailure="true" dir="${coredir}/lib/mshoplib" />
+		<phing target="testperf" haltonfailure="true" dir="${coredir}/client/html" />
+		<phing target="testperf" haltonfailure="true" dir="${coredir}/lib/mwlib" />
+		<phing target="testperf" haltonfailure="true">
+			<fileset dir="${extdir}" expandsymboliclinks="true" >
+				<include name="**/phing.xml" />
+			</fileset>
+		</phing>
+	</target>
+
+
+	<target name="check" description="Executes all checks">
+		<property name="codestddir" value="${project.basedir}/misc/coding" override="true" />
+		<phing target="check" haltonfailure="true" dir="${coredir}/lib/mshoplib" />
+		<phing target="check" haltonfailure="true" dir="${coredir}/controller/common" />
+		<phing target="check" haltonfailure="true" dir="${coredir}/controller/frontend" />
+		<phing target="check" haltonfailure="true" dir="${coredir}/controller/extjs" />
+		<phing target="check" haltonfailure="true" dir="${coredir}/controller/jobs" />
+		<phing target="check" haltonfailure="false" dir="${coredir}/client/extjs" />
+		<phing target="check" haltonfailure="true" dir="${coredir}/client/html" />
+		<phing target="check" haltonfailure="true" dir="${coredir}/lib/mwlib" />
+		<phing target="check" haltonfailure="true">
+			<fileset dir="${extdir}" expandsymboliclinks="true" >
+				<include name="**/phing.xml" />
+			</fileset>
+		</phing>
+	</target>
+
+	<target name="checkext" description="Executes checks of specific extension directory">
+		<property name="codestddir" value="${project.basedir}/misc/coding" override="true" />
+		<phing target="check" haltonfailure="true" dir="${dir}" phingfile="phing.xml" />
+	</target>
+
+
+	<target name="doc" description="Generates the documentation" depends="test">
+		<taskdef name="confdoc" classname="MShopConfigDocTask" classpath="${coredir}/misc/phing" />
+		<mkdir dir="${coredir}/misc/confdoc/" />
+		<echo msg="Generating config documentation" />
+		<confdoc keyprefix="client/extjs" wikiprefix="Configuration/Core" keyparts="1"
+			outfile="${coredir}/misc/confdoc/core-client-extjs.wiki">
+			<fileset dir="${coredir}/client/extjs" expandsymboliclinks="true" >
+				<include name="src/**/*.js" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="client/html" wikiprefix="Configuration/Core" keyparts="1"
+			optfile="${coredir}/client/html/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-client-html.wiki">
+			<fileset dir="${coredir}/client/html" expandsymboliclinks="true" >
+				<include name="layouts/**/*.html" />
+				<include name="src/**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="classes/client/html" wikiprefix="Configuration/Core" keyparts="0"
+			optfile="${coredir}/client/html/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-classes-client-html.wiki">
+			<fileset dir="${coredir}/client/html" expandsymboliclinks="true" >
+				<include name="src/**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="controller/extjs" wikiprefix="Configuration/Core" keyparts="0"
+			optfile="${coredir}/controller/extjs/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-controller-extjs.wiki">
+			<fileset dir="${coredir}/controller/extjs/src" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="classes/controller/extjs" wikiprefix="Configuration/Core" keyparts="0"
+			optfile="${coredir}/controller/extjs/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-classes-controller-extjs.wiki">
+			<fileset dir="${coredir}/controller/extjs/src" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="controller/frontend" wikiprefix="Configuration/Core" keyparts="0"
+			optfile="${coredir}/controller/frontend/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-controller-frontend.wiki">
+			<fileset dir="${coredir}/controller/frontend/src" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="classes/controller/frontend" wikiprefix="Configuration/Core" keyparts="0"
+			optfile="${coredir}/controller/frontend/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-classes-controller-frontend.wiki">
+			<fileset dir="${coredir}/controller/frontend/src" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="controller/common" wikiprefix="Configuration/Core" keyparts="0"
+			optfile="${coredir}/controller/common/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-controller-common.wiki">
+			<fileset dir="${coredir}/controller/common/src" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="controller/jobs" wikiprefix="Configuration/Core" keyparts="0"
+			optfile="${coredir}/controller/jobs/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-controller-jobs.wiki">
+			<fileset dir="${coredir}/controller/jobs/src" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="classes/controller/jobs" wikiprefix="Configuration/Core" keyparts="0"
+			optfile="${coredir}/controller/jobs/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-classes-controller-jobs.wiki">
+			<fileset dir="${coredir}/controller/jobs/src" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="mshop" wikiprefix="Configuration/Core" keyparts="2"
+			optfile="${coredir}/lib/mshoplib/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-mshop.wiki">
+			<fileset dir="${coredir}/lib/mshoplib/src" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="madmin" wikiprefix="Configuration/Core" keyparts="2"
+			optfile="${coredir}/lib/mshoplib/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-madmin.wiki">
+			<fileset dir="${coredir}/lib/mshoplib/src/MAdmin" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<confdoc keyprefix="classes" wikiprefix="Configuration/Core" keyparts="0"
+			optfile="${coredir}/lib/mshoplib/tests/confdoc.ser"
+			outfile="${coredir}/misc/confdoc/core-classes-mshop.wiki">
+			<fileset dir="${coredir}/lib/mshoplib/src" expandsymboliclinks="true" >
+				<include name="**/*.php" />
+			</fileset>
+		</confdoc>
+		<echo msg="Generating API documentation" />
+		<delete dir="${coredir}/misc/apidoc" quiet="true" failonerror="false" />
+		<exec command="composer require phpdocumentor/phpdocumentor:2.3.*" checkreturn="true" logoutput="true" />
+		<exec command="${coredir}/vendor/bin/phpdoc.php --sourcecode -t ${coredir}/misc/apidoc
+			-d client/html/src -d controller/frontend/src -d controller/extjs/src
+			-d controller/jobs/src -d lib/mshoplib/src -d lib/mwlib/src -f Arcavias.php
+			--template=responsive-twig" checkreturn="true" logoutput="true" />
+	</target>
+
+
+	<target name="clean" description="Cleans up temporary files">
+		<delete dir="${coredir}/misc/apidoc" quiet="true" failonerror="false" />
+		<phing target="clean" haltonfailure="true" dir="${coredir}/lib/mshoplib" />
+		<phing target="clean" haltonfailure="true" dir="${coredir}/controller/common" />
+		<phing target="clean" haltonfailure="true" dir="${coredir}/controller/frontend" />
+		<phing target="clean" haltonfailure="true" dir="${coredir}/controller/extjs" />
+		<phing target="clean" haltonfailure="true" dir="${coredir}/controller/jobs" />
+		<phing target="clean" haltonfailure="true" dir="${coredir}/client/html" />
+		<phing target="clean" haltonfailure="true" dir="${coredir}/lib/mwlib" />
+		<phing target="clean" haltonfailure="true">
+			<fileset dir="${extdir}" expandsymboliclinks="true" >
+				<include name="**/phing.xml" />
+			</fileset>
+		</phing>
+	</target>
+
+
+	<target name="i18n" description="Creates all translation files">
+		<phing target="i18n" haltonfailure="true" dir="${coredir}/client/extjs" />
+		<phing target="i18n" haltonfailure="true" dir="${coredir}/client/html" />
+		<phing target="i18n" haltonfailure="true" dir="${coredir}/controller/common" />
+		<phing target="i18n" haltonfailure="true" dir="${coredir}/controller/frontend" />
+		<phing target="i18n" haltonfailure="true" dir="${coredir}/controller/extjs" />
+		<phing target="i18n" haltonfailure="true" dir="${coredir}/controller/jobs" />
+		<phing target="i18n" haltonfailure="true" dir="${coredir}/lib/mshoplib" />
+		<phing target="i18n" haltonfailure="true">
+			<fileset dir="${extdir}" expandsymboliclinks="true" >
+				<include name="**/phing.xml" />
+			</fileset>
+		</phing>
+	</target>
+
+
+	<target name="build" description="Creates all files to be generated" >
+		<taskdef name="jsbpackages" classname="MShopJsbPackageTask" classpath="${coredir}/misc/phing" />
+		<jsbpackages />
+		<exec command="tx pull -a -f --minimum-perc=1" checkreturn="true" logoutput="true" />
+		<phing target="build" haltonfailure="true" dir="${coredir}/client/extjs" />
+		<phing target="build" haltonfailure="true" dir="${coredir}/client/html" />
+		<phing target="build" haltonfailure="true" dir="${coredir}/controller/common" />
+		<phing target="build" haltonfailure="true" dir="${coredir}/controller/frontend" />
+		<phing target="build" haltonfailure="true" dir="${coredir}/controller/extjs" />
+		<phing target="build" haltonfailure="true" dir="${coredir}/controller/jobs" />
+		<phing target="build" haltonfailure="true" dir="${coredir}/lib/mshoplib" />
+		<phing target="build" haltonfailure="true">
+			<fileset dir="${extdir}" expandsymboliclinks="true" >
+				<include name="**/phing.xml" />
+			</fileset>
+		</phing>
+    </target>
+
+
+	<target name="deploy" description="Executes all deployments" depends="clean,build">
+		<propertyprompt propertyName="version" promptText="Enter release version" promptCharacter=":" useExistingValue="true"/>
+		<exec command="tar -c --bzip2 --exclude-from=.exclude -f ../arcavias-core_${version}.tar.bz2 ."
+			checkreturn="true" logoutput="true"/>
+		<filehash file="../arcavias-core_${version}.tar.bz2" hashtype="1" />
+		<echo msg="SHA1 hash value: ${filehashvalue}" />
+	</target>
+
+
+	<target name="release" description="Creates new release" depends="build">
+		<propertyprompt propertyName="version" promptText="Enter release version" promptCharacter=":" useExistingValue="true"/>
+		<exec command="git branch ${version}" checkreturn="true" logoutput="true" />
+		<exec command="git tag -a ${version}.1 -m 'Release ${version}.1'" checkreturn="true" logoutput="true" />
+		<exec command="git push origin ${version}" checkreturn="true" logoutput="true" />
+		<exec command="git push --tags" checkreturn="true" logoutput="true" />
+	</target>
+
+	<target name="releaseext" description="Creates new releases of the extensions">
+		<propertyprompt propertyName="version" promptText="Enter release version" promptCharacter=":" useExistingValue="true"/>
+		<phing target="release">
+			<fileset dir="${extdir}" expandsymboliclinks="true" >
+				<include name="**/phing.xml" />
+			</fileset>
+		</phing>
+	</target>
+
+
+	<target name="createext" description="Creates new extension">
+		<propertyprompt propertyName="extname" promptText="Enter extension name (only A-Z, a-z, 0-9 and -)" promptCharacter=":" useExistingValue="true"/>
+		<copy todir="${extdir}/${extname}" >
+			<fileset dir="${coredir}/misc/ext-template">
+				<exclude name="**/.gitkeep" />
+				<include name="**" />
+			</fileset>
+		</copy>
+		<reflexive>
+		  <fileset dir="${extdir}/${extname}">
+		  	<include name="**" />
+		  </fileset>
+		  <filterchain>
+		    <replaceregexp>
+		      <regexp pattern="&lt;extname&gt;" replace="${extname}"/>
+		    </replaceregexp>
+		  </filterchain>
+		</reflexive>
+	</target>
+
+
+	<target name="all" depends="setup,test,check" description="Executes all essential targets for testing" />
+
+</project>
