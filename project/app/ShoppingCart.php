@@ -4,26 +4,31 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class ShoppingCart extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'customers';
+    protected $table = 'shopping_carts';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['id', 'name', 'email', 'phone', 'address', 'password'];
+    protected $fillable = ['id', 'customer_id', 'total'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [];
+
+    public function ShoppingItems() 
+    {
+        return $this->hasMany('ShoppingItem', 'shopping_cart_id');
+    }
 }

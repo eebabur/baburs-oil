@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Producer extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'customers';
+    protected $table = 'producers';
 
     /**
      * The attributes that are mass assignable.
@@ -26,4 +26,10 @@ class Customer extends Model
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function products()
+    {
+        return $this->hasMany('product', 'producer_id');
+    }
 }
+
