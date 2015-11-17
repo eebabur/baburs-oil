@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,6 +29,6 @@ class ShoppingItem extends Model
 
     public function product() 
     {
-    	return $this->belongsTo('Product', 'product_id');
+    	return $this->belongsTo('App\Models\Product', 'product_id');
     }
 }

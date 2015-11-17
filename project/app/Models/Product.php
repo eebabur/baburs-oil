@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,11 +29,11 @@ class Product extends Model
 
     public function producer() 
     {
-    	return $this->belogsTo('producer', 'producer_id');
+    	return $this->belongsTo('App\Models\Producer', 'producer_id');
     }
 
     public function shoppingItems()
     {
-        return $this->hasMany('Product', 'product_id');
+        return $this->hasMany('App\Models\ShoppingItem', 'product_id');
     }
 }
