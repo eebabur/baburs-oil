@@ -1,0 +1,54 @@
+Entities - Classes
+
+
+	class Customer
+	{
+		int id
+		String name
+		String email
+		String phone
+		String address
+	}
+
+	class Producer
+	{
+		int id
+		String name
+		String email
+		String phone
+		String address
+	}
+
+	class Product
+	{
+		int id
+		String title
+		String description
+		int price
+		Producer producer
+	}
+
+	class Catalog
+	{
+		int id
+		String title
+		Product[] products
+	}
+
+	class ShoppingItem
+	{
+		int id
+		Product product
+		int quantity
+		int total
+	}
+	class ShoppingCart
+	{
+		int id
+		Customer Customer
+		ShoppingItem[] items
+		int total
+	}
+-- 
+
+?>
