@@ -19,6 +19,7 @@ class CreateProducersTable extends Migration
             $table->string('phone');
             $table->string('address');
             $table->string('password', 60);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
