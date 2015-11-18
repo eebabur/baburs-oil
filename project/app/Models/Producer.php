@@ -18,14 +18,14 @@ class Producer extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'name', 'email', 'phone', 'address', 'password'];
+    protected $fillable = ['name', 'phone', 'address'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [];
 
     public function products()
     {

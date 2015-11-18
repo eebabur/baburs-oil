@@ -17,7 +17,12 @@ use App\Models\ShoppingCart;
 
 class MainController extends Controller
 {
-    public function index()
+    public function loadHomepage()
+    {
+        return response()->view('welcome');
+    }
+    /*
+    public function getProducts()
     {
     	$products = Product::all();
     	foreach ($products as $product) 
@@ -39,6 +44,6 @@ class MainController extends Controller
         {
         	Log::info($shoppingItem->id);
         }
-        */
+    */
     }
 }
