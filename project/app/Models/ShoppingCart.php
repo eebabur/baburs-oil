@@ -27,8 +27,32 @@ class ShoppingCart extends Model
      */
     protected $hidden = [];
 
-    public function shoppingItems() 
+    // Getter and setter methods
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    public function setTotal($total)
+    {
+        $this->total = $total;
+    }
+
+    // Relations
+    public function getCustomer() 
+    {
+        return $this->belongsTo('App\Models\Customer', 'customer_id');
+    }
+
+    public function getShoppingItems() 
     {
         return $this->hasMany('App\Models\ShoppingItem', 'shopping_cart_id');
     }
+
+    // Methods
 }

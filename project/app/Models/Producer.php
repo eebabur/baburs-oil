@@ -27,6 +27,43 @@ class Producer extends Model
      */
     protected $hidden = [];
 
+    // Getter and setter methods
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    // Relations
     public function products()
     {
         return $this->hasMany('App\Models\Product', 'producer_id');

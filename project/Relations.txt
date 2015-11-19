@@ -1,0 +1,10 @@
+Customer
+Producer
+Product
+ShoppingItem
+ShoppingCart
+
+Customer 1 - * ShoppingCart
+ShoppingCart 1 - * ShoppingItem
+ShoppingItem * - 1 Product
+Product * - 1 Producer

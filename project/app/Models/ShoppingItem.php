@@ -27,8 +27,31 @@ class ShoppingItem extends Model
      */
     protected $hidden = [];
 
-    public function product() 
+    // Getter and setter methods
+    // Getter and setter methods
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    // Relations
+    public function getProduct() 
     {
     	return $this->belongsTo('App\Models\Product', 'product_id');
+    }
+
+    public function getShoppingCart($product)
+    {
+        eturn $this->belongsTo('App\Models\Product', 'product_id');
     }
 }

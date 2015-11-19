@@ -9,12 +9,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Log;
 
-use App\Models\Customer;
-use App\Models\Producer;
-use App\Models\Product;
-use App\Models\ShoppingItem;
-use App\Models\ShoppingCart;
-
 class MainController extends Controller
 {
     public function loadHomepage()
