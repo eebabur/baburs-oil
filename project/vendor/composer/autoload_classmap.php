@@ -13,6 +13,7 @@ return array(
     'CreateShoppingCartsTable' => $baseDir . '/database/migrations/2015_11_17_202129_create_shopping_carts_table.php',
     'CreateShoppingItemsTable' => $baseDir . '/database/migrations/2015_11_17_201813_create_shopping_items_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
+    'CustomersTableSeeder' => $baseDir . '/database/seeds/CustomersTableSeeder.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',

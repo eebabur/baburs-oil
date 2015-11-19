@@ -9,11 +9,30 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Log;
 
+use App\Models\Producer;
+use App\Models\Product;
+
 class MainController extends Controller
 {
     public function loadHomepage()
     {
         return response()->view('welcome');
+    }
+
+    public function loadProducersWithProducts()
+    {
+        $producers = Producer::all();
+
+        foreach ($producers as $producer) 
+        {
+            Log::info($producer->getName());
+            $products = $producer->getProducts()->get();
+
+            foreach ($products as $product) 
+            {
+                Log::info($producer->getName() . " - " . $product->getTitle());
+            }
+        }
     }
     /*
     public function getProducts()
@@ -38,6 +57,7 @@ class MainController extends Controller
         {
         	Log::info($shoppingItem->id);
         }
-    */
+    
     }
+    */
 }

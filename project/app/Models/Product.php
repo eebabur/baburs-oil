@@ -35,7 +35,7 @@ class Product extends Model
 
     public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     public function setTitle($title)
@@ -64,12 +64,12 @@ class Product extends Model
     }
 
     // Relations
-    public function producer() 
+    public function getProducer() 
     {
     	return $this->belongsTo('App\Models\Producer', 'producer_id');
     }
 
-    public function shoppingItems()
+    public function getShoppingItems()
     {
         return $this->hasMany('App\Models\ShoppingItem', 'product_id');
     }

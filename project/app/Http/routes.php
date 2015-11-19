@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 	['middleware' => 'auth', 'uses' =>  'MainController@loadHomepage']);
+Route::get('/test', 'MainController@loadProducersWithProducts');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
