@@ -11,15 +11,28 @@ class ProducersTableSeeder extends Seeder
      */
     public function run()
     {
-    	for ($x = 0; $x <= 10; $x++) {
-    		DB::table('producers')->insert([
-    			'name' => "name".str_random(10),
-    			'email' => "email".str_random(10).'@gmail.com',
-    			'phone' => "+90505".str_random(7),
-    			'address' => "adres".str_random(20), 
-    			'password' => bcrypt('secret'),
-    			'remember_token' => "token",
-    		]);
-    	}
+        DB::table('producers')->insert([
+			'name' => "Ahmet",
+			'phone' => "05056751234",
+			'address' => "Cunda",
+		]);
+
+		DB::table('producers')->insert([
+			'name' => "Mehmet",
+			'phone' => "05056756789",
+			'address' => "Ayvalik",
+		]);
+
+		DB::table('producers')->insert([
+			'name' => "Hasan",
+			'phone' => "05456751234",
+			'address' => "Edremit",
+		]);
+
+		DB::table('producers')->insert([
+			'name' => "Huseyin",
+			'phone' => "05326751223",
+			'address' => "Alacati",
+		]);
     }
 }

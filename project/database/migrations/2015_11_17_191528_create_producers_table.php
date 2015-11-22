@@ -15,11 +15,8 @@ class CreateProducersTable extends Migration
         Schema::create('producers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->nullable();
             $table->string('phone');
             $table->string('address');
-            $table->string('password', 60);
-            $table->rememberToken();
             $table->timestamps();
         });
     }
