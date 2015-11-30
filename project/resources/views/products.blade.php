@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/star-rating.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
     <style>
         html, body {
             height: 100%;
@@ -34,6 +36,11 @@
 
         .title {
             font-size: 96px;
+        }
+
+        .col-centered{
+            float: none;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -92,105 +99,108 @@
 </a>
 </div>
 
-<div class="col-sm-12" style="padding-top:50px;">
-    <nav class="col-sm-4">
-      <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
-        <li class="active"><a href="#section1">Section 1</a></li>
-        <li><a href="#section2">Section 2</a></li>
-        <li><a href="#section3">Section 3</a></li>
-      </ul>
-    </nav>
-    <div class="col-sm-8 well">
-        <div class="col-sm-6" style="padding-top:30px;">
-            <img src="images/mock_urun.jpeg" class="col-sm-4">
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRODUCT NAME</p>
-                <p>700 ml</p>
+<div class="col-sm-12 well" style="padding-top:50px;">
+    <div class="col-sm-8 col-centered">
+        <div class="col-sm-3" style="padding-top:20px;">
+            <div class="col-centered" style="background-color:white;overflow: hidden">
+                <img src="images/mock_urun.jpeg" class="col-sm-12">
+                <div class="col-sm-12">
+                    <p style="color:black;font-weight:bold;">Siena</p>
+                </div>   
+                <div class="col-sm-12" style="padding-left: 0px !important; padding-right: 0px !important;">
+                    <p style="color:white;background-color:black;">700 ml</p>
+                </div>   
+                <div class="col-sm-4" style="background-color:white;">
+                    <p>56,00 TL</p>
+                </div>   
+                <div class="col-sm-8" style="line-height:40px;background-image: url('images/star-128.png');background-repeat: no-repeat;background-position: center; ">
+                    5.8
+                </div> 
+                <div class="col-sm-12">
+                <input id="input-21e" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                </div>
             </div>   
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRICE</p>
-                <p>56,00 TL</p>
+        </div> 
+        <div class="col-sm-3" style="padding-top:20px;">
+            <div class="col-centered" style="background-color:white;overflow: hidden">
+                <img src="images/mock_urun.jpeg" class="col-sm-12">
+                <div class="col-sm-12">
+                    <p style="color:black;font-weight:bold;">Siena</p>
+                </div>   
+                <div class="col-sm-12" style="padding-left: 0px !important; padding-right: 0px !important;">
+                    <p style="color:white;background-color:black;">700 ml</p>
+                </div>   
+                <div class="col-sm-4" style="background-color:white;">
+                    <p>56,00 TL</p>
+                </div>   
+                <div class="col-sm-8" style="line-height:40px;background-image: url('images/star-128.png');background-repeat: no-repeat;background-position: center; ">
+                    5.8
+                </div> 
+                <div class="col-sm-12">
+                <input id="input-21e" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                </div>
             </div>   
-        </div>
-        <div class="col-sm-6" style="padding-top:30px;">
-            <a href="/productDetails">
-            <img src="images/mock_urun.jpeg" class="col-sm-4">
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRODUCT NAME</p>
-                <p>700 ml</p>
+        </div> 
+        <div class="col-sm-3" style="padding-top:20px;">
+            <div class="col-centered" style="background-color:white;overflow: hidden">
+                <img src="images/mock_urun.jpeg" class="col-sm-12">
+                <div class="col-sm-12">
+                    <p style="color:black;font-weight:bold;">Siena</p>
+                </div>   
+                <div class="col-sm-12" style="padding-left: 0px !important; padding-right: 0px !important;">
+                    <p style="color:white;background-color:black;">700 ml</p>
+                </div>   
+                <div class="col-sm-4" style="background-color:white;">
+                    <p>56,00 TL</p>
+                </div>   
+                <div class="col-sm-8" style="line-height:40px;background-image: url('images/star-128.png');background-repeat: no-repeat;background-position: center; ">
+                    5.8
+                </div> 
+                <div class="col-sm-12">
+                <input id="input-21e" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                </div>
             </div>   
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRICE</p>
-                <p>56,00 TL</p>
+        </div> 
+        <div class="col-sm-3" style="padding-top:20px;">
+            <div class="col-centered" style="background-color:white;overflow: hidden">
+                <img src="images/mock_urun.jpeg" class="col-sm-12">
+                <div class="col-sm-12">
+                    <p style="color:black;font-weight:bold;">Siena</p>
+                </div>   
+                <div class="col-sm-12" style="padding-left: 0px !important; padding-right: 0px !important;">
+                    <p style="color:white;background-color:black;">700 ml</p>
+                </div>   
+                <div class="col-sm-4" style="background-color:white;">
+                    <p>56,00 TL</p>
+                </div>   
+                <div class="col-sm-8" style="line-height:40px;background-image: url('images/star-128.png');background-repeat: no-repeat;background-position: center; ">
+                    5.8
+                </div> 
+                <div class="col-sm-12">
+                <input id="input-21e" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                </div>
             </div>   
-            </a>
-        </div>
-        <div class="col-sm-6" style="padding-top:30px;">
-            <img src="images/mock_urun.jpeg" class="col-sm-4">
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRODUCT NAME</p>
-                <p>700 ml</p>
+        </div> 
+        <div class="col-sm-3" style="padding-top:20px;">
+            <div class="col-centered" style="background-color:white;overflow: hidden">
+                <img src="images/mock_urun.jpeg" class="col-sm-12">
+                <div class="col-sm-12">
+                    <p style="color:black;font-weight:bold;">Siena</p>
+                </div>   
+                <div class="col-sm-12" style="padding-left: 0px !important; padding-right: 0px !important;">
+                    <p style="color:white;background-color:black;">700 ml</p>
+                </div>   
+                <div class="col-sm-4" style="background-color:white;">
+                    <p>56,00 TL</p>
+                </div>   
+                <div class="col-sm-8" style="line-height:40px;background-image: url('images/star-128.png');background-repeat: no-repeat;background-position: center; ">
+                    5.8
+                </div> 
+                <div class="col-sm-12">
+                <input id="input-21e" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                </div>
             </div>   
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRICE</p>
-                <p>56,00 TL</p>
-            </div>   
-        </div>
-        <div class="col-sm-6" style="padding-top:30px;">
-            <img src="images/mock_urun.jpeg" class="col-sm-4">
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRODUCT NAME</p>
-                <p>700 ml</p>
-            </div>   
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRICE</p>
-                <p>56,00 TL</p>
-            </div>   
-        </div>
-        <div class="col-sm-6" style="padding-top:30px;">
-            <img src="images/mock_urun.jpeg" class="col-sm-4">
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRODUCT NAME</p>
-                <p>700 ml</p>
-            </div>   
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRICE</p>
-                <p>56,00 TL</p>
-            </div>   
-        </div>
-        <div class="col-sm-6" style="padding-top:30px;">
-            <img src="images/mock_urun.jpeg" class="col-sm-4">
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRODUCT NAME</p>
-                <p>700 ml</p>
-            </div>   
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRICE</p>
-                <p>56,00 TL</p>
-            </div>   
-        </div>
-        <div class="col-sm-6" style="padding-top:30px;">
-            <img src="images/mock_urun.jpeg" class="col-sm-4">
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRODUCT NAME</p>
-                <p>700 ml</p>
-            </div>   
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRICE</p>
-                <p>56,00 TL</p>
-            </div>   
-        </div>
-        <div class="col-sm-6" style="padding-top:30px;">
-            <img src="images/mock_urun.jpeg" class="col-sm-4">
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRODUCT NAME</p>
-                <p>700 ml</p>
-            </div>   
-            <div class="col-sm-4">
-                <p style="font-weight:bold;">PRICE</p>
-                <p>56,00 TL</p>
-            </div>   
-        </div>
+        </div> 
     </div>
 </div>
 
@@ -199,5 +209,8 @@
 
 </div>
 </div>
+
+
+
 </body>
 </html>
