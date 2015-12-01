@@ -18,7 +18,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'producer_id', 'title', 'description', 'price'];
+    protected $fillable = ['id', 'producer_id', 'title', 'description', 'price', 'imageUrl'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -63,6 +63,16 @@ class Product extends Model
         $this->price = $price;
     }
 
+    public function getImageUrl()
+    {
+        return $imageUrl->imageUrl;
+    }
+
+    public function setImageUrl($imageUrl)
+    {
+        $this->imageUrl = $imageUrl;
+    }
+
     // Relations
     public function getProducer() 
     {
@@ -72,5 +82,10 @@ class Product extends Model
     public function getShoppingItems()
     {
         return $this->hasMany('App\Models\ShoppingItem', 'product_id');
+    }
+
+    public function getRatings()
+    {
+        return $this->hasMany('App\Models\Rating', 'product_id');
     }
 }
