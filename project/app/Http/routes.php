@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/',		'MainController@loadHomepage');
+Route::get('/',		'MainController@loadProductsView');
 //Route::get('/', 	['middleware' => 'auth', 'uses' =>  'MainController@loadHomepage']);
 //Route::get('/test', 'MainController@loadProducersWithProducts');
 
@@ -25,13 +25,6 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('/', function () {
-    return view('products');
-});
-
-Route::get('/products', function () {
-    return view('products');
-});
 
 Route::get('/productDetails', function () {
     return view('productDetails');

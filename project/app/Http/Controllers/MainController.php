@@ -9,17 +9,34 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Log;
 
+use App\Models\Customer;
 use App\Models\Producer;
 use App\Models\Product;
+use App\Models\ShoppingCart;
 
 class MainController extends Controller
 {
-    public function loadHomepage()
+    public function loadProductsView(Request $request)
     {
-        return response()->view('welcome');
+        $products = Product::all();
+        return response()->view('products', ['products' => $products]);
     }
 
-    public function loadProducersWithProducts()
+    public function loadProductDetailsView(Request $request)
+    {
+        $productId = $request->input('productId');
+        $product = Product::find($productId);
+        return response()->view('productDetailView', ['product' => $product]);
+    }
+
+    public function loadShoppingCartView(Request $request)
+    {
+        $customerId = $request->input('customerId');
+        $shoppingCart = ShoppingCart::find($customerId);
+        return response()->view('shoppingCartView', ['shoppingCart' => $shoppingCart]);
+    }
+
+    /*public function loadProducersWithProducts()
     {
         $producers = Producer::all();
 
@@ -33,7 +50,7 @@ class MainController extends Controller
                 Log::info($producer->getName() . " - " . $product->getTitle());
             }
         }
-    }
+    }*/
     /*
     public function getProducts()
     {

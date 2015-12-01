@@ -62,8 +62,6 @@
     </div>
 </nav>
 <div class="content">
-    <div class="title">Babür's Oil</div>
-    <div>Zeytinyağı</div>
 
     <div id="myCarousel" class="carousel slide col-sm-12" data-ride="carousel">
       <!-- Indicators -->
