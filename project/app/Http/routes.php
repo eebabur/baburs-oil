@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/',		'MainController@loadProductsView');
-//Route::get('/', 	['middleware' => 'auth', 'uses' =>  'MainController@loadHomepage']);
-//Route::get('/test', 'MainController@loadProducersWithProducts');
+Route::get('/',				'MainController@loadHomepage');
+Route::get('/products',		'MainController@loadProducts');
+Route::get('/products/{id}','MainController@loadProductDetails');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -22,8 +22,11 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
-
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+/*Route::post('/addShoppingItem', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@addsShoppingItem'])
+//Route::get('/', 	['middleware' => 'auth', 'uses' =>  'MainController@loadHomepage']);
+//Route::get('/test', 'MainController@loadProducersWithProducts');
 
 
 Route::get('/productDetails', function () {
@@ -33,3 +36,4 @@ Route::get('/productDetails', function () {
 Route::get('/login', function () {
     return view('login');
 });
+*/

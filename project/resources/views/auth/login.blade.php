@@ -1,28 +1,67 @@
-<!-- resources/views/auth/login.blade.php -->
+<!DOCTYPE html>
+<html>
+        <head>
+        <title>Babur's Oil</title>
 
-<form method="POST" action="/auth/login">
-    {!! csrf_field() !!}
+        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
+        <style>
+            html, body {
+                height: 100%;
+            }
 
-    <div>
-        Password
-        <input type="password" name="password" id="password">
-    </div>
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                display: table;
+                font-weight: 100;
+                font-family: 'Lato';
+            }
 
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
+            .container {
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+            }
 
-    <div>
-        <button type="submit">Login</button>
-    </div>
+            .content {
+                text-align: center;
+                display: inline-block;
+            }
 
-    <div>
-        <a href="/auth/register"> Register </a>
-    </div>
+            .title {
+                font-size: 96px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <form method="POST" action="/auth/login">
+                    <div>
+                        Email
+                        <input type="email" name="email" value="{{ old('email') }}">
+                    </div>
 
-</form>
+                    <div>
+                        Password
+                        <input type="password" name="password" id="password">
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="remember"> Remember Me
+                    </div>
+
+                    <div>
+                        <button type="submit">Login</button>
+                    </div>
+
+                    <div>
+                        <a href="/auth/register"> Register </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

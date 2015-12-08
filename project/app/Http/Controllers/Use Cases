@@ -1,0 +1,20 @@
+X + Request base URL
+X - Load homepage
+X + Request login page
+X - Load login page
+X + Login
+X - Log user in
+X + Request products page
+X - Load products page
+X + Request product details page
+X - Load product details page
++ Add product into cart
+- Create shopping item and add into cart
++ Remove product from cart
+- Remove shopping item from cart
++ Request shopping cart page
+- Load shopping cart page
++ Request checkout page
+- Load checkout page
++ Request payment process
+- Process payment

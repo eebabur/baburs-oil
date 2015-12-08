@@ -65,7 +65,7 @@ class Product extends Model
 
     public function getImageUrl()
     {
-        return $imageUrl->imageUrl;
+        return $this->imageUrl;
     }
 
     public function setImageUrl($imageUrl)

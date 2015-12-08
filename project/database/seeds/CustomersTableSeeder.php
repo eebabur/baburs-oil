@@ -15,6 +15,7 @@ class CustomersTableSeeder extends Seeder
 			'name' => "Ahmet",
 			'email' => "ahmet@mail.com",
 			'phone' => "05056751234",
+			'password' => '123456',
 			'address' => "Pendik",
 		]);
 
@@ -22,6 +23,7 @@ class CustomersTableSeeder extends Seeder
 			'name' => "Mehmet",
 			'email' => "mehmet@mail.com",
 			'phone' => "05056755264",
+			'password' => '123456',
 			'address' => "Kadikoy",
 		]);
 
@@ -29,6 +31,7 @@ class CustomersTableSeeder extends Seeder
 			'name' => "Hasan",
 			'email' => "hasan@mail.com",
 			'phone' => "05056478234",
+			'password' => '123456',
 			'address' => "Besiktas",
 		]);
 
@@ -36,6 +39,7 @@ class CustomersTableSeeder extends Seeder
 			'name' => "Serhat",
 			'email' => "serhat@mail.com",
 			'phone' => "05054321234",
+			'password' => '123456',
 			'address' => "Sariyer",
 		]);
 
@@ -43,6 +47,7 @@ class CustomersTableSeeder extends Seeder
 			'name' => "Murat",
 			'email' => "murat@mail.com",
 			'phone' => "05059831234",
+			'password' => '123456',
 			'address' => "Atasehir",
 		]);
     }

@@ -16,6 +16,28 @@ use App\Models\ShoppingCart;
 
 class MainController extends Controller
 {
+    public function __construct()
+    {
+        Log::info("MainController is created successfully.");
+    }
+
+    public function loadHomepage()
+    {
+        return response()->view('welcome');
+    }
+
+    public function loadProducts()
+    {
+        $products = Product::all();
+        return response()->view('products', ['products' => $products]);
+    }
+
+    public function loadProductDetails($id)
+    {
+        $product = Product::find($id);
+        return response()->view('productDetails', ['product' => $product]);
+    }
+/*
     public function loadProductsView(Request $request)
     {
         $products = Product::all();
