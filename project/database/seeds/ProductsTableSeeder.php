@@ -18,7 +18,6 @@ class ProductsTableSeeder extends Seeder
 			'description' => "desc",
 			'price' => (rand() % 50 + 1) * (rand() % 10 + 1),
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg", 
-			'published' => 1,
 		]);
 
         DB::table('products')->insert([
@@ -27,7 +26,6 @@ class ProductsTableSeeder extends Seeder
             'description' => "desc",
             'price' => (rand() % 50 + 1) * (rand() % 10 + 1),
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg", 
-            'published' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -36,7 +34,6 @@ class ProductsTableSeeder extends Seeder
             'description' => "desc",
             'price' => (rand() % 50 + 1) * (rand() % 10 + 1), 
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg",
-            'published' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -45,7 +42,6 @@ class ProductsTableSeeder extends Seeder
             'description' => "desc",
             'price' => (rand() % 50 + 1) * (rand() % 10 + 1),
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg", 
-            'published' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -54,7 +50,6 @@ class ProductsTableSeeder extends Seeder
             'description' => "desc",
             'price' => (rand() % 50 + 1) * (rand() % 10 + 1),
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg", 
-            'published' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -63,7 +58,6 @@ class ProductsTableSeeder extends Seeder
             'description' => "desc",
             'price' => (rand() % 50 + 1) * (rand() % 10 + 1),
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg", 
-            'published' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -72,7 +66,6 @@ class ProductsTableSeeder extends Seeder
             'description' => "desc",
             'price' => (rand() % 50 + 1) * (rand() % 10 + 1),
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg", 
-            'published' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -81,7 +74,6 @@ class ProductsTableSeeder extends Seeder
             'description' => "desc",
             'price' => (rand() % 50 + 1) * (rand() % 10 + 1),
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg", 
-            'published' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -90,7 +82,6 @@ class ProductsTableSeeder extends Seeder
             'description' => "desc",
             'price' => (rand() % 50 + 1) * (rand() % 10 + 1),
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg", 
-            'published' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -99,7 +90,6 @@ class ProductsTableSeeder extends Seeder
             'description' => "desc",
             'price' => (rand() % 50 + 1) * (rand() % 10 + 1),
             'imageUrl' => "http://oakandwhale.co.nz/wp-content/uploads/2010/05/Fotolia_1333170_M.jpg", 
-            'published' => 1,
         ]);
     }
 }
