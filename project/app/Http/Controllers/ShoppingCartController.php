@@ -13,6 +13,7 @@ use App\Models\Customer;
 use App\Models\Producer;
 use App\Models\Product;
 use App\Models\ShoppingCart;
+use Auth;
 
 class ShoppingCartController extends Controller
 {
@@ -21,10 +22,37 @@ class ShoppingCartController extends Controller
         Log::info("ShoppingCartController is created successfully.");
     }
 
+    public function listShoppingItems()
+    {
+        $customer = Auth::user();
+        $shoppingCart = $customer->ActiveShoppingCart();
+
+        if(isset($shoppingCart))
+        {
+            return response()->view('shoppingCart', ['shoppingCart' => $shoppingCart]);
+        }
+        else
+        {
+            return response()->view('shoppingCart', ['shoppingCart' => []]);
+        }
+    }
+
     public function addShoppingItem(Request $request)
     {
-        // Get all shopping carts of logged in user
-        // Check if user has an open shopping cart
+        $customer = Auth::user();
+        $shoppingCart = $customer->ActiveShoppingCart();
+        if(isset($shoppingCart))
+        {
+            $shoppingItem = ShoppingItem::create();
+            $product = Product::find($request->input('productId'));
+            $shoppingItem->Product()->associate($product);
+        }
+        else
+        {
+            $shoppingCart = ShoppingCart::create();
+        }
+        return 0;
+        
         // Create a shopping cart if there is none
         // Create a shopping item with given product id
         // Add newly created shopping item into the cart
