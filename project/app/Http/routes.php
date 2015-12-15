@@ -11,9 +11,16 @@
 |
 */
 
+// Anonymous navigation routes
 Route::get('/',				'MainController@loadHomepage');
 Route::get('/products',		'MainController@loadProducts');
 Route::get('/products/{id}','MainController@loadProductDetails');
+
+// Shopping cart routes
+Route::get('/shoppingItems', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@listShoppingItems']);
+Route::post('/shoppingItems', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@addShoppingItem']);
+Route::patch('/shoppingItems', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@updateShoppingItem']);
+Route::delete('/shoppingItems/{id}', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@removeShoppingItem']);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
