@@ -64,9 +64,9 @@ class Producer extends Model
     }
 
     // Relations
-    public function getProducts()
+    public function Products()
     {
-        return $this->hasMany('App\Models\Product', 'producer_id');
+        return $this->hasMany('App\Models\Product', 'producer_id', 'id')->get();
     }
 }
 

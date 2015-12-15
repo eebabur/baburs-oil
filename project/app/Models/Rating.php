@@ -44,13 +44,13 @@ class Rating extends Model
     }
 
     // Relations
-    public function getUser()
+    public function Customer()
     {
-        eturn $this->belongsTo('App\Models\User', 'user_id');
+        eturn $this->belongsTo('App\Models\Customer', 'user_id', 'id')->first();
     }
 
-    public function getProduct()
+    public function Product()
     {
-        eturn $this->belongsTo('App\Models\Product', 'product_id');
+        eturn $this->belongsTo('App\Models\Product', 'product_id', 'id')->first();
     }
 }

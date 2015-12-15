@@ -18,7 +18,7 @@ class ShoppingCart extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'customer_id', 'total'];
+    protected $fillable = ['id', 'customer_id', 'total', 'finalized'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -44,14 +44,14 @@ class ShoppingCart extends Model
     }
 
     // Relations
-    public function getCustomer() 
+    public function Customer() 
     {
-        return $this->belongsTo('App\Models\Customer', 'customer_id');
+        return $this->belongsTo('App\Models\Customer', 'customer_id', 'id')->first();
     }
 
-    public function getShoppingItems() 
+    public function ShoppingItems() 
     {
-        return $this->hasMany('App\Models\ShoppingItem', 'shopping_cart_id');
+        return $this->hasMany('App\Models\ShoppingItem', 'shopping_cart_id', 'id')->get();
     }
 
     // Methods

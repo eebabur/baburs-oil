@@ -45,13 +45,13 @@ class ShoppingItem extends Model
     }
 
     // Relations
-    public function getProduct() 
+    public function Product() 
     {
-    	return $this->belongsTo('App\Models\Product', 'product_id');
+    	return $this->belongsTo('App\Models\Product', 'product_id', 'id')->first();
     }
 
-    public function getShoppingCart($product)
+    public function ShoppingCart()
     {
-        eturn $this->belongsTo('App\Models\Product', 'product_id');
+        return $this->belongsTo('App\Models\ShoppingCart', 'shopping_cart_id', 'id')->first();
     }
 }

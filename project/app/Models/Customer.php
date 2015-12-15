@@ -84,19 +84,25 @@ class Customer extends Model implements AuthenticatableContract,
     }
 
     // Relations
-    public function getShoppingCarts()
+    public function ShoppingCarts()
     {
-        return $this->hasMany('App\Models\ShoppingCart', 'customer_id');
+        return $this->hasMany('App\Models\ShoppingCart', 'customer_id', 'id')->get();
     }
 
-    public function getRatings()
+    public function ActiveShoppingCart()
     {
-        return $this->hasMany('App\Models\Rating', 'user_id');
+        return $this->ShoppingCarts()->where('finalized', 'false')->first();
+
     }
 
-    public function getAverageRating()
+    public function Ratings()
     {
-        $ratings = $this->getRatings();
+        return $this->hasMany('App\Models\Rating', 'user_id', 'id')->get();
+    }
+
+    public function AverageRating()
+    {
+        $ratings = $this->Ratings();
         $sum = 0;
         foreach ($ratings as $rating) 
         {

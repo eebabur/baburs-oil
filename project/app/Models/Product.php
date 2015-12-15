@@ -74,18 +74,18 @@ class Product extends Model
     }
 
     // Relations
-    public function getProducer() 
+    public function Producer() 
     {
-    	return $this->belongsTo('App\Models\Producer', 'producer_id');
+    	return $this->belongsTo('App\Models\Producer', 'producer_id', 'id')->first();
     }
 
-    public function getShoppingItems()
+    public function ShoppingItems()
     {
-        return $this->hasMany('App\Models\ShoppingItem', 'product_id');
+        return $this->hasMany('App\Models\ShoppingItem', 'product_id', 'id')->get();
     }
 
-    public function getRatings()
+    public function Ratings()
     {
-        return $this->hasMany('App\Models\Rating', 'product_id');
+        return $this->hasMany('App\Models\Rating', 'product_id', 'id')->get();
     }
 }
