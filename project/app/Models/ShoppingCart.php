@@ -18,7 +18,7 @@ class ShoppingCart extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'customer_id', 'total', 'finalized'];
+    protected $fillable = ['id', 'customer_id', 'finalized'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -33,14 +33,14 @@ class ShoppingCart extends Model
         return $this->id;
     }
 
-    public function getTotal()
+    public function setCustomer(Customer $customer)
     {
-        return $this->total;
+        $this->customer_id = $customer->getId();
     }
 
-    public function setTotal($total)
+    public function setFinalized($finalized)
     {
-        $this->total = $total;
+        $this->finalized = $finalized;
     }
 
     // Relations

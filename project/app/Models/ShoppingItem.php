@@ -44,6 +44,16 @@ class ShoppingItem extends Model
         $this->quantity = $quantity;
     }
 
+    public function setProduct(Product $product)
+    {
+        $this->product_id = $product->getId();
+    }
+
+    public function setShoppingCart(ShoppingCart $shopping_cart)
+    {
+        $this->shopping_cart_id = $shopping_cart->getId();
+    }
+
     // Relations
     public function Product() 
     {
