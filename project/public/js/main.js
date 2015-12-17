@@ -1,11 +1,17 @@
 function addProduct(productId)
 {
-	$.ajax({  
-	        type: "POST",  
-	        url: "/shoppingItems",  
-	        data: {'productId': productId},  
-	        success: function(dataString) {  
-	            alert('success');
-	        }  
-    });
+	quantity = $('.quantity#'+productId).val();
+	if(quantity < 1)
+		alert('Invalid quantity');
+	else
+		$.ajax({  
+		        type: "POST",  
+		        url: "/shoppingItems",  
+		        data: {
+		        	'productId': productId,
+		        	'quantity': quantity,
+		        },  
+		        success: function(dataString) {  
+		        }  
+	    });
 }
