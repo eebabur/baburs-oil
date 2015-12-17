@@ -20,7 +20,7 @@ Route::get('/products/{id}','MainController@loadProductDetails');
 Route::get('/shoppingItems', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@listShoppingItems']);
 Route::post('/shoppingItems', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@addShoppingItem']);
 Route::patch('/shoppingItems', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@updateShoppingItem']);
-Route::delete('/shoppingItems/{id}', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@removeShoppingItem']);
+Route::delete('/shoppingItems/{productId}', ['middleware' => 'auth', 'uses' =>  'ShoppingCartController@removeShoppingItem']);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

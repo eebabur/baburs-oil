@@ -28,7 +28,7 @@ class ShoppingCartController extends Controller
         $customer = Auth::user();
         $shoppingCart = $customer->ActiveShoppingCart();
 
-        if(isset($shoppingCart))
+        if(isset($shoppingCart) && count($shoppingCart->ShoppingItems())>0)
         {
             return response()->view('shoppingCart', ['shoppingCart' => $shoppingCart]);
         }
@@ -78,12 +78,22 @@ class ShoppingCartController extends Controller
         return $shoppingItem;
     }
 
-    public function removeShoppingItem(Request $request)
+    public function removeShoppingItem($productId)
     {
-        // Get all shopping carts of logged in user
-        // Check if user has an open shopping cart
-        // Throw exception if there is none
-        // Remove shopping item with given product id
+        $customer = Auth::user();
+        $shoppingCart = $customer->ActiveShoppingCart();
+        $shoppingItems = $shoppingCart->ShoppingItems();
+        $shoppingItem = null;
+        foreach($shoppingItems as $item)
+        {
+            if($item->Product()->getId() == $productId)
+            {
+                $shoppingItem = $item;
+                break;
+            }
+        }
+        $shoppingItem->delete();
+        return 0;
     }
 
     public function updateShoppingItem(Request $request)

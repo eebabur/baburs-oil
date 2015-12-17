@@ -14,6 +14,7 @@
                     echo '<p>Price: ' . $shoppingItem->Product()->getPrice() . '</p>';
                     echo '<p>Total: ' . $shoppingItem->Product()->getPrice() * $shoppingItem->getQuantity() . '</p>';
                     echo '<img src="' . $shoppingItem->Product()->getImageUrl() . '" width="200" height="200"/>';
+                    echo '<p><button id="' . $shoppingItem->Product()->getId() . '" onClick="removeProduct(this.id)">Remove from cart</button></p>';
                 }
             }
             else
